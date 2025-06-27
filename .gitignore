@@ -1,0 +1,97 @@
+# Arquivo .gitignore para projetos C# (Console e Web App) com a IDE Rider.
+
+### JetBrains Rider ###
+# Ignora o diretório de configuração específico do usuário do Rider/IntelliJ.
+# Compartilhe configurações de 'Run' e dicionários se necessário, descomentando e
+# adicionando exceções como !.idea/runConfigurations/ e !.idea/dictionaries/
+.idea/
+
+# Arquivos de módulo do IntelliJ
+*.iml
+
+### Visual Studio / .NET Core ###
+# Configurações de usuário específicas
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Arquivos de cache e de compilação
+*.vs/
+.vs/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Arquivos gerados pelo Resharper (se usado com Rider)
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Arquivos de build
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+netcoreapp*/
+[Nn]et[Ss]tandard*/
+
+# Resultados de Testes
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.[Tt]est[Ll]og
+*.VisualState.xml
+TestResult.xml
+nunit-result.xml
+coverage.cobertura.xml
+
+# Pacotes NuGet
+# Recomendado não ignorar a pasta 'packages' se você não usa a restauração automática de pacotes.
+# No entanto, com o .NET moderno, a restauração é padrão, então ignoramos.
+*.nupkg
+*.nuget.props
+*.nuget.targets
+packages/
+
+# Arquivos de publicação do Web App
+*.pubxml
+*.publish.xml
+*.config
+*.zip
+
+### Web App Específicos ###
+# Ignora bibliotecas do lado do cliente que podem ser restauradas (Bower, LibMan, etc.)
+wwwroot/lib/
+
+# User Secrets - NUNCA adicione segredos ao controle de versão
+secrets.json
+
+# Configurações de ambiente de desenvolvimento local
+appsettings.Development.json
+appsettings.*.json
+!appsettings.Template.json
+
+# Arquivos de log gerados pela aplicação
+Logs/
+*.log
+
+# Cache do Bundler & Minifier
+[Bb]undler[Mm]inifier.history
+[Bb]undler[Mm]inifier.cache
+
+### Arquivos de Sistema Operacional ###
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Arquivos de thumbnail (Linux)
+.thumbnails/
+
+### Outros ###
+# Arquivos de documentação gerados
+Help/

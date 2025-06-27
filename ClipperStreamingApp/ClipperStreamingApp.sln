@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipperStreamingApp.Api", "ClipperStreamingApp.Api\ClipperStreamingApp.Api.csproj", "{073CD046-AA9A-44E9-BC2B-407DE8A8592F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipperStreamingApp.Application", "ClipperStreamingApp.Application\ClipperStreamingApp.Application.csproj", "{7142A97F-4D12-4340-8C0B-FC30F75720C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipperStreamingApp.Domain", "ClipperStreamingApp.Domain\ClipperStreamingApp.Domain.csproj", "{F5BEC303-039B-491B-B955-BD1FB48FB0CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipperStreamingApp.Infrastructure", "ClipperStreamingApp.Infrastructure\ClipperStreamingApp.Infrastructure.csproj", "{43C8F927-6491-4167-AB60-E0CF76FD4A33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipperStreamingApp.Repositorie", "ClipperStreamingApp.Repositorie\ClipperStreamingApp.Repositorie.csproj", "{AC1D0128-7D55-46FA-B7FA-946E71A0D537}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{073CD046-AA9A-44E9-BC2B-407DE8A8592F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{073CD046-AA9A-44E9-BC2B-407DE8A8592F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{073CD046-AA9A-44E9-BC2B-407DE8A8592F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{073CD046-AA9A-44E9-BC2B-407DE8A8592F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7142A97F-4D12-4340-8C0B-FC30F75720C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7142A97F-4D12-4340-8C0B-FC30F75720C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7142A97F-4D12-4340-8C0B-FC30F75720C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7142A97F-4D12-4340-8C0B-FC30F75720C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5BEC303-039B-491B-B955-BD1FB48FB0CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5BEC303-039B-491B-B955-BD1FB48FB0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5BEC303-039B-491B-B955-BD1FB48FB0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5BEC303-039B-491B-B955-BD1FB48FB0CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43C8F927-6491-4167-AB60-E0CF76FD4A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43C8F927-6491-4167-AB60-E0CF76FD4A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43C8F927-6491-4167-AB60-E0CF76FD4A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43C8F927-6491-4167-AB60-E0CF76FD4A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC1D0128-7D55-46FA-B7FA-946E71A0D537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC1D0128-7D55-46FA-B7FA-946E71A0D537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC1D0128-7D55-46FA-B7FA-946E71A0D537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC1D0128-7D55-46FA-B7FA-946E71A0D537}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

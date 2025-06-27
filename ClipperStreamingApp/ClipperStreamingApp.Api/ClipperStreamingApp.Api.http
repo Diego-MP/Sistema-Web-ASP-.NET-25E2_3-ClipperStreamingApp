@@ -1,0 +1,6 @@
+@ClipperStreamingApp.Api_HostAddress = http://localhost:5265
+
+GET {{ClipperStreamingApp.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

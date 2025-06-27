@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Assinatura\Exceptions\" />
+      <Folder Include="Assinatura\Factory\" />
+      <Folder Include="Conta\Exceptions\" />
+      <Folder Include="Conta\Repository\" />
+      <Folder Include="Playlist\Exceptions\" />
+      <Folder Include="Playlist\Repository\" />
+    </ItemGroup>
+
+</Project>

@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ClipperStreamingApp.Domain;
+using ClipperStreamingApp.Domain.Playlist;
+using ClipperStreamingApp.Domain.Conta;
+using ClipperStreamingApp.Domain.Assinatura;
 
 public class StreamingDbContext : DbContext
 {
@@ -7,7 +9,6 @@ public class StreamingDbContext : DbContext
     {
     }
 
-    // --- DbSets para todas as entidades ---
     public DbSet<Conta> Contas { get; set; }
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Assinatura> Assinaturas { get; set; }
@@ -49,15 +50,22 @@ public class StreamingDbContext : DbContext
         modelBuilder.Entity<Playlist>(entity =>
         {
             entity.HasOne(p => p.Conta)
-                  .WithMany(c => c.Playlists);
-            
+                .WithMany(c => c.Playlists);
+
             entity.HasMany(p => p.Musicas)
-                  .WithMany()
-                  .UsingEntity("PlaylistMusica");
-            
+                .WithMany()
+                .UsingEntity("PlaylistMusica");
+
             entity.HasMany(p => p.Bandas)
-                  .WithMany()
-                  .UsingEntity("PlaylistBanda");
+                .WithMany()
+                .UsingEntity("PlaylistBanda");
+            
+            entity.Property(p => p.Nome)
+                .IsRequired();
+
+            entity.Property(p => p.Nome)
+                .HasMaxLength(100);
+
         });
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ClipperStreamingApp.Domain;
+﻿namespace ClipperStreamingApp.Domain.Playlist;
 
 public class Musica
 {

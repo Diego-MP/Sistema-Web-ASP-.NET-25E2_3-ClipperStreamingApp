@@ -1,5 +1,4 @@
-﻿namespace ClipperStreamingApp.Domain;
-
+﻿namespace ClipperStreamingApp.Domain.Assinatura;
 public class Transacao
 {
     public int Id { get; set; }

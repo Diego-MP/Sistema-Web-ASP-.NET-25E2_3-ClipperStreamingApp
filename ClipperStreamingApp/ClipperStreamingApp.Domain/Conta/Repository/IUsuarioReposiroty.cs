@@ -1,6 +1,7 @@
-﻿namespace ClipperStreamingApp.Domain.Model.Factory;
+﻿namespace ClipperStreamingApp.Domain.Conta.Repository;
 
-public class IUsuarioReposiroty
+public interface IUsuarioRepository
 {
-    
+    Task<Usuario?> GetByUsernameAsync(string username);
+
 }

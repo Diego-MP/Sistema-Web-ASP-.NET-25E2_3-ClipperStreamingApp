@@ -1,6 +1,6 @@
-﻿namespace ClipperStreamingApp.Domain.Model.Factory;
+﻿namespace ClipperStreamingApp.Domain.Conta.Repository;
 
-public class IContaReposiroty
+public interface IContaRepository
 {
-    
+    Task<Conta?> GetByIdWithPlaylistsAsync(int id);
 }

@@ -1,4 +1,4 @@
-﻿namespace ClipperStreamingApp.Domain;
+﻿namespace ClipperStreamingApp.Domain.Assinatura;
 
 public class TransacaoAutorizadaEvent
 {

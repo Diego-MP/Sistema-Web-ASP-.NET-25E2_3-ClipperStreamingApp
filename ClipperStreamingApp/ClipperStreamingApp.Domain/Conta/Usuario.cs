@@ -1,5 +1,4 @@
-﻿namespace ClipperStreamingApp.Domain;
-
+﻿namespace ClipperStreamingApp.Domain.Conta;
 public class Usuario
 {
     public int Id { get; set; }
@@ -9,6 +8,11 @@ public class Usuario
     public string Email { get; set; }
     
     public virtual Conta Conta { get; set; }
+    
+    public bool VerificarPassword(string password)
+    {
+        return Password == password;
+    }
 }
 
 

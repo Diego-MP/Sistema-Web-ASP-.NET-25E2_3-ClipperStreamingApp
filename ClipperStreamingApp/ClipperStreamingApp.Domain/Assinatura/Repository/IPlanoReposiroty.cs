@@ -1,4 +1,4 @@
-﻿namespace ClipperStreamingApp.Domain.Repository;
+﻿namespace ClipperStreamingApp.Domain.Assinatura.Repository;
 
 public class IPlanoReposiroty
 {

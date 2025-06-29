@@ -19,4 +19,9 @@ public class ContaRepository : IContaRepository
             .Include(c => c.Playlists) 
             .FirstOrDefaultAsync(c => c.Id == id);
     }
+
+    public async Task<Conta?> GetByIdAsync(int id)
+    {
+        return await _context.Contas.FindAsync(id);
+    }
 }

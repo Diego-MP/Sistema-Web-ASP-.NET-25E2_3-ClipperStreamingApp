@@ -4,5 +4,5 @@ namespace ClipperStreamingApp.Domain.Conta.Factory;
 
 public interface IContaFactory
 {
-    Conta CriarConta(Usuario usuario, Plano planoPadrao = null);
+    Conta CriarConta(Usuario usuario, Assinatura.Plano planoPadrao = null);
 }

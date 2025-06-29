@@ -18,7 +18,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ClipperStreamingApp.Domain\ClipperStreamingApp.Domain.csproj" />
-      <ProjectReference Include="..\ClipperStreamingApp.Infrastructure\ClipperStreamingApp.Infrastructure.csproj" />
       <ProjectReference Include="..\ClipperStreamingApp.Repositorie\ClipperStreamingApp.Repositorie.csproj" />
     </ItemGroup>
 

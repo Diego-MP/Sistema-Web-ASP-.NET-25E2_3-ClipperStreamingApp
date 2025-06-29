@@ -7,5 +7,5 @@ public interface IPlaylistRepository
 
     Task<Musica?> GetMusicaByIdAsync(int id);
     Task<Banda?> GetBandaByIdAsync(int id);
-    Task<int> SaveChangesAsync();
+     Task<int> SaveChangesAsync();
 }

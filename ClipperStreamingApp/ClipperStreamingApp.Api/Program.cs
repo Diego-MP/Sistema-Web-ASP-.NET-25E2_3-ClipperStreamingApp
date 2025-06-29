@@ -1,13 +1,17 @@
 using ClipperStreamingApp.Domain.Conta.Factory;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Serialization;
 using ClipperStreamingApp.Application.Interfaces;
 using ClipperStreamingApp.Application.Services;
+using ClipperStreamingApp.Domain.Assinatura.Repository;
 using ClipperStreamingApp.Domain.Conta.Repository;
 using ClipperStreamingApp.Domain.Playlist.Repository;
 using ClipperStreamingApp.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies; 
+using ClipperStreamingApp.Domain.Musica.Repository;
+using ClipperStreamingApp.Domain.Plano.Repository;
+using ClipperStreamingApp.Infrastructure.Services;
+using ClipperStreamingApp.Infrastructure.Data; 
 
 Env.Load();
 
@@ -20,6 +24,14 @@ builder.Services.AddScoped<IBandaRepository, BandaRepository>();
 builder.Services.AddScoped<IContaRepository, ContaRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
+builder.Services.AddScoped<IAssinaturaRepository, AssinaturaRepository>();
+builder.Services.AddScoped<IPlanoRepository, PlanoRepository>();
+builder.Services.AddScoped<INotificacaoService, NotificacaoService>();
+builder.Services.AddScoped<IAssinaturaService, AssinaturaService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

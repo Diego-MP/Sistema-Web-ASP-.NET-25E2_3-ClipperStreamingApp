@@ -1,6 +1,6 @@
 ﻿namespace ClipperStreamingApp.Domain.Assinatura.Repository;
 
-public class IAssinaturaReposiroty
+public interface IAssinaturaRepository
 {
-    
+    void Add(Assinatura assinatura);
 }

@@ -3,4 +3,6 @@
 public interface IBandaRepository
 {
     Task<Banda?> GetByIdWithMusicasAsync(int id);
+    Task<IEnumerable<Banda>> SearchByNameAsync(string term);
+
 }

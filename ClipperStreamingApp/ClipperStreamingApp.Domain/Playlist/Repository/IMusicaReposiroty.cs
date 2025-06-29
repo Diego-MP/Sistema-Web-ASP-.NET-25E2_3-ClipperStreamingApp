@@ -1,8 +1,7 @@
-﻿namespace ClipperStreamingApp.Domain.Playlist.Repository;
+﻿
+namespace ClipperStreamingApp.Domain.Musica.Repository;
 
-
-
-public class IMusicaReposiroty
+public interface IMusicaRepository
 {
-    
+    Task<IEnumerable<Playlist.Musica>> SearchByNameAsync(string term);
 }

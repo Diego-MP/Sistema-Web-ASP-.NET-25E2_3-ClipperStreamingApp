@@ -14,4 +14,11 @@ public class BandaRepository : IBandaRepository
             .Include(b => b.Musicas)
             .FirstOrDefaultAsync(b => b.Id == id);
     }
+
+    public async Task<IEnumerable<Banda>> SearchByNameAsync(string term)
+    {
+        return await _context.Bandas
+            .Where(b => b.Nome.ToLower().Contains(term.ToLower()))
+            .ToListAsync();
+    }
 }

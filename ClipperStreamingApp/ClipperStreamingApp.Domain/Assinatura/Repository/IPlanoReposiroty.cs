@@ -1,6 +1,6 @@
-﻿namespace ClipperStreamingApp.Domain.Assinatura.Repository;
+﻿namespace ClipperStreamingApp.Domain.Plano.Repository;
 
-public class IPlanoReposiroty
+public interface IPlanoRepository
 {
-    
+    Task<Assinatura.Plano?> GetByIdAsync(int id);
 }

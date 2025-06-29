@@ -10,7 +10,7 @@
       <Folder Include="Assinatura\Exceptions\" />
       <Folder Include="Assinatura\Factory\" />
       <Folder Include="Conta\Exceptions\" />
-      <Folder Include="Conta\Repository\" />
+      <Folder Include="Conta\Factory\" />
       <Folder Include="Playlist\Exceptions\" />
       <Folder Include="Playlist\Repository\" />
     </ItemGroup>

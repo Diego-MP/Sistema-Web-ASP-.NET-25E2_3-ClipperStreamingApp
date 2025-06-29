@@ -1,8 +1,30 @@
+using DotNetEnv;
+using ClipperStreamingApp.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
+Env.Load();
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+var connectionString = builder.Configuration.GetConnectionString("CSDbContext");
+
+var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+var dbPass = Environment.GetEnvironmentVariable("DB_PASS");
+var dbUrl = Environment.GetEnvironmentVariable("DB_URL");
+
+string finalConnectionString = connectionString
+    .Replace("{USER}", dbUser)
+    .Replace("{PASS}", dbPass)
+    .Replace("{URL}", dbUrl);
+
+Console.WriteLine($"Connecting to {finalConnectionString}");
+
+builder.Services.AddDbContext<StreamingDbContext>(options =>
+    options.UseSqlServer(finalConnectionString));
 
 var app = builder.Build();
 

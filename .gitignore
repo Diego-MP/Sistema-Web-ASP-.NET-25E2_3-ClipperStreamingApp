@@ -95,3 +95,6 @@ desktop.ini
 ### Outros ###
 # Arquivos de documentação gerados
 Help/
+
+# Dados de Dev
+.env

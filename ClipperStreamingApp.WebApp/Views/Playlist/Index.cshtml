@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ClipperStreamingApp.WebApp.Models.PlaylistViewModel>
+@{
+    ViewData["Title"] = "Minhas Playlists";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="list-group">
+            @foreach (var playlist in Model)
+            {
+                <a asp-action="Details" asp-route-id="@playlist.Id" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    @playlist.Nome
+                    <span class="badge bg-primary rounded-pill">@playlist.QuantidadeMusicas música(s)</span>
+                </a>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Você ainda não possui nenhuma playlist.
+        </div>
+    }
+</div>

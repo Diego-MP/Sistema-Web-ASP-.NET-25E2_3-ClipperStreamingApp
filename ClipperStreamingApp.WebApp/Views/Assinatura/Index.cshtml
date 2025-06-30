@@ -1,0 +1,48 @@
+﻿@model ClipperStreamingApp.WebApp.Models.AssinaturaViewModel
+@{
+    ViewData["Title"] = "Escolha seu Plano";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h3>Nossos Planos de Assinatura</h3>
+                </div>
+                <div class="card-body">
+                    @if (Model.PlanosDisponiveis != null && Model.PlanosDisponiveis.Any())
+                    {
+                        <form asp-action="Assinar" method="post">
+                            @Html.AntiForgeryToken()
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                            
+                            <p>Selecione o plano que melhor se adapta a você:</p>
+
+                            @foreach (var plano in Model.PlanosDisponiveis)
+                            {
+                                <div class="form-check mb-3 p-3 border rounded">
+                                    <input class="form-check-input" type="radio" asp-for="SelectedPlanoId" id="plano-@plano.Id" value="@plano.Id">
+                                    <label class="form-check-label" for="plano-@plano.Id">
+                                        <strong>@plano.Nome</strong> - R$ @plano.Valor.ToString("F2")
+                                    </label>
+                                </div>
+                            }
+                            <span asp-validation-for="SelectedPlanoId" class="text-danger"></span>
+
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-primary">Confirmar Assinatura</button>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">
+                            Nenhum plano de assinatura disponível no momento.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

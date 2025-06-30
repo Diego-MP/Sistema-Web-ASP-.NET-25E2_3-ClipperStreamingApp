@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ClipperStreamingApp.WebApp.Models.HistoricoAssinaturaViewModel>
+@{
+    ViewData["Title"] = "Histórico de Assinaturas";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                <tr>
+                    <th>Plano</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>Data da Transação</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.NomePlano</td>
+                        <td>@item.ValorPlano.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
+                        <td>
+                            @if (item.Status)
+                            {
+                                <span class="badge bg-success">Ativa</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inativa</span>
+                            }
+                        </td>
+                        <td>@item.DataUltimaTransacao.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Você ainda não possui um histórico de assinaturas.
+        </div>
+    }
+</div>

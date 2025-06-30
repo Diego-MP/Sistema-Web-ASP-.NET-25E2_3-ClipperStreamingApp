@@ -1,0 +1,120 @@
+﻿@model ClipperStreamingApp.WebApp.Models.SearchViewModel
+@using System.Security.Claims
+@inject ClipperStreamingApp.WebApp.Services.IPlaylistService PlaylistService 
+@{
+    ViewData["Title"] = "Pesquisar";
+    var userPlaylists = await PlaylistService.GetUserPlaylistsAsync(int.Parse(User.FindFirstValue("UserId")));
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+
+    <form asp-action="Index" method="post" class="mb-4">
+        <div class="input-group">
+            <input asp-for="Query" class="form-control" placeholder="Digite o nome de uma música ou banda..." />
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-search"></i> Pesquisar
+            </button>
+        </div>
+    </form>
+
+    @if (Model != null && (Model.BandasResult.Any() || Model.MusicasResult.Any()))
+    {
+        <div class="row g-4">
+            @if (Model.MusicasResult.Any())
+            {
+                <div class="col-md-6">
+                    <h4>Músicas Encontradas</h4>
+                    <ul class="list-group">
+                        @foreach (var musica in Model.MusicasResult)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>@musica.Nome</strong><br />
+                                    <small class="text-muted">@musica.NomeBanda</small>
+                                </div>
+                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addToPlaylistModal" data-item-id="@musica.Id" data-item-type="Musica" data-item-name="@musica.Nome">
+                                    <i class="bi bi-plus-lg"></i> Adicionar
+                                </button>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            @if (Model.BandasResult.Any())
+            {
+                <div class="col-md-6">
+                    <h4>Bandas Encontradas</h4>
+                    <ul class="list-group">
+                        @foreach (var banda in Model.BandasResult)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @banda.Nome
+                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addToPlaylistModal" data-item-id="@banda.Id" data-item-type="Banda" data-item-name="@banda.Nome">
+                                    <i class="bi bi-plus-lg"></i> Adicionar
+                                </button>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(Model?.Query))
+    {
+        <div class="alert alert-info mt-4">Nenhum resultado encontrado para "@Model.Query".</div>
+    }
+</div>
+
+<div class="modal fade" id="addToPlaylistModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form asp-controller="Search" asp-action="AddToPlaylist" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Query" />
+                <input type="hidden" asp-for="SelectedItemId" id="modalSelectedItemId" />
+                <input type="hidden" asp-for="SelectedItemType" id="modalSelectedItemType" />
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Adicionar à Playlist</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Adicionar <strong id="modalItemName"></strong> à playlist:</p>
+                    <select asp-for="SelectedPlaylistId" asp-items="@(new SelectList(userPlaylists, "Id", "Nome"))" class="form-select">
+                        <option value="">-- Escolha uma Playlist --</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modal = document.getElementById('addToPlaylistModal');
+            modal.addEventListener('show.bs.modal', function (event) {
+                var button = event.relatedTarget;
+                
+                var itemId = button.getAttribute('data-item-id');
+                var itemType = button.getAttribute('data-item-type');
+                var itemName = button.getAttribute('data-item-name');
+
+                var modalItemIdInput = modal.querySelector('#modalSelectedItemId');
+                var modalItemTypeInput = modal.querySelector('#modalSelectedItemType');
+                var modalItemNameElement = modal.querySelector('#modalItemName');
+
+                modalItemIdInput.value = itemId;
+                modalItemTypeInput.value = itemType;
+                modalItemNameElement.textContent = itemName;
+            });
+        });
+    </script>
+}

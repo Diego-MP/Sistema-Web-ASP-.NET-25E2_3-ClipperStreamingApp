@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+    .hero-section {
+        padding: 4rem 2rem;
+        background: radial-gradient(circle, rgba(79,70,229,0.2) 0%, rgba(18,18,18,0) 60%);
+        border-radius: 1rem;
+        text-align: center;
+    }
+
+    .feature-card {
+        background-color: #181818;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        height: 100%;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        color: #8B5CF6; 
+    }
+</style>
+
+<div class="hero-section mb-5">
+    <h1 class="display-4 fw-bold">Bem-vindo, @User.Identity.Name!</h1>
+    <p class="lead text-muted col-lg-8 mx-auto">A sua central de música está pronta. Explore as suas playlists, descubra novos artistas ou gira a sua conta.</p>
+</div>
+
+<div class="row g-4 text-center">
+    <div class="col-md-4">
+        <div class="feature-card d-flex flex-column">
+            <div class="mb-3">
+                <i class="bi bi-music-note-list feature-icon"></i>
+            </div>
+            <h4 class="fw-semibold">As Minhas Playlists</h4>
+            <p class="text-muted">Aceda e gira todas as suas playlists guardadas num só lugar.</p>
+            <div class="mt-auto">
+                <a asp-controller="Playlist" asp-action="Index" class="btn btn-outline-light">Ver Playlists</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="feature-card d-flex flex-column">
+            <div class="mb-3">
+                <i class="bi bi-search feature-icon"></i>
+            </div>
+            <h4 class="fw-semibold">Descobrir</h4>
+            <p class="text-muted">Procure por novas músicas e artistas para adicionar à sua coleção.</p>
+            <div class="mt-auto">
+                <a asp-controller="Search" asp-action="Index" class="btn btn-primary">Começar a Pesquisar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="feature-card d-flex flex-column">
+            <div class="mb-3">
+                <i class="bi bi-gem feature-icon"></i>
+            </div>
+            <h4 class="fw-semibold">A Minha Assinatura</h4>
+            <p class="text-muted">Veja o seu plano atual, histórico de pagamentos e opções disponíveis.</p>
+            <div class="mt-auto">
+                <a asp-controller="Assinatura" asp-action="Historico" class="btn btn-outline-light">Ver Histórico</a>
+            </div>
+        </div>
+    </div>
+</div>

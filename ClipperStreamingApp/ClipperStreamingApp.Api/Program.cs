@@ -30,6 +30,7 @@ builder.Services.AddScoped<IPlanoRepository, PlanoRepository>();
 builder.Services.AddScoped<INotificacaoService, NotificacaoService>();
 builder.Services.AddScoped<IAssinaturaService, AssinaturaService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IPlanoRepository, PlanoRepository>();
 
 
 
@@ -79,11 +80,11 @@ builder.Services.AddDbContext<StreamingDbContext>(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// if (!app.Environment.IsDevelopment())
+// {
+     app.UseSwagger();
+     app.UseSwaggerUI();
+// }
 
 app.UseHttpsRedirection();
 

@@ -12,14 +12,15 @@ public class PlaylistRepository : IPlaylistRepository
     {
         _context = context;
     }
-
     public async Task<Playlist?> GetByIdWithItemsAsync(int id)
     {
         return await _context.Playlists
             .Include(p => p.Musicas) 
-            .Include(p => p.Bandas)  
+            .ThenInclude(m => m.Banda)
+            .Include(p => p.Bandas)
             .FirstOrDefaultAsync(p => p.Id == id);
     }
+
     
     public async Task<Musica?> GetMusicaByIdAsync(int id)
     {

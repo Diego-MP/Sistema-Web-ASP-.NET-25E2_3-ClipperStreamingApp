@@ -14,15 +14,17 @@ public class ContaController : ControllerBase
     private readonly StreamingDbContext _context;
     private readonly IContaFactory _contaFactory;
     private readonly IPlaylistService _playlistService;
-
+    private readonly IAssinaturaService _assinaturaService; 
     public ContaController(
         StreamingDbContext context,
         IContaFactory contaFactory,
-        IPlaylistService playlistService) 
+        IPlaylistService playlistService,
+        IAssinaturaService assinaturaService) 
     {
         _context = context;
         _contaFactory = contaFactory;
         _playlistService = playlistService;
+        _assinaturaService = assinaturaService;
     }
 
     [HttpPost("registrar")]
@@ -51,6 +53,8 @@ public class ContaController : ControllerBase
             usuarioId = novoUsuario.Id,
             contaId = novaConta.Id
         });
+        
+        
     }
     
     [HttpGet]
@@ -84,6 +88,30 @@ public class ContaController : ControllerBase
             });
 
             return Ok(playlistsDto);
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+    }
+    
+    [HttpGet("{contaId}/assinaturas")]
+    public async Task<IActionResult> GetAssinaturasDaConta(int contaId)
+    {
+        try
+        {
+            var assinaturas = await _assinaturaService.GetAssinaturasByContaIdAsync(contaId);
+            
+            var assinaturaDtos = assinaturas.Select(a => new AssinaturaDetalhesDto
+            {
+                Id = a.Id,
+                NomePlano = a.Plano.Nome,
+                ValorPlano = a.Plano.Valor,
+                Status = a.Status,
+                DataUltimaTransacao = a.Transacoes.OrderByDescending(t => t.Data).FirstOrDefault()?.Data
+            });
+
+            return Ok(assinaturaDtos);
         }
         catch (KeyNotFoundException ex)
         {

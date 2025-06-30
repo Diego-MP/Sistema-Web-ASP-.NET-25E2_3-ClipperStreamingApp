@@ -1,9 +1,9 @@
-﻿using System.Security.Claims;
-using ClipperStreamingApp.Api.DTOs;
+﻿using ClipperStreamingApp.Api.DTOs;
 using ClipperStreamingApp.Application.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ClipperStreamingApp.Api.Controllers;
 
@@ -19,7 +19,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginRequest request) 
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         var usuario = await _authService.AutenticarAsync(request.Username, request.Password);
 
@@ -32,23 +32,25 @@ public class AuthController : ControllerBase
         {
             new Claim(ClaimTypes.Name, usuario.Username),
             new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
-            new Claim(ClaimTypes.Email, usuario.Email)
+            new Claim("ContaId", usuario.Conta.Id.ToString()) 
         };
         
         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        var authProperties = new AuthenticationProperties
-        {
-            IsPersistent = true
-        };
-
+        
         await HttpContext.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme, 
-            new ClaimsPrincipal(claimsIdentity), 
-            authProperties);
+            new ClaimsPrincipal(claimsIdentity));
+        
+        var response = new LoginResponseDto
+        {
+            Message = "Login realizado com sucesso.",
+            UsuarioId = usuario.Id,
+            ContaId = usuario.Conta.Id 
+        };
 
-        return Ok(new { message = "Login realizado com sucesso." });
+        return Ok(response);
     }
-    
+
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()
     {

@@ -1,5 +1,4 @@
-﻿// using ClipperStreamingApp.Application.Interfaces;
-using ClipperStreamingApp.Domain.Assinatura;
+﻿using ClipperStreamingApp.Domain.Assinatura;
 
 using ClipperStreamingApp.Application.Interfaces;
 

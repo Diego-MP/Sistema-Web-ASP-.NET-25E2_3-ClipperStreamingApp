@@ -16,6 +16,8 @@ public class UsuarioRepository : IUsuarioRepository
     
     public async Task<Usuario?> GetByUsernameAsync(string username)
     {
-        return await _context.Usuarios.FirstOrDefaultAsync(u => u.Username == username);
+        return await _context.Usuarios
+            .Include(u => u.Conta) 
+            .FirstOrDefaultAsync(u => u.Username == username);
     }
 }

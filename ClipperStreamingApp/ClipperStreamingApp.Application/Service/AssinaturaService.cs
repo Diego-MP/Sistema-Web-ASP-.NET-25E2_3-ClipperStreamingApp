@@ -46,4 +46,16 @@ public class AssinaturaService : IAssinaturaService
         var evento = new TransacaoAutorizadaEvent(novaTransacao);
         await _notificacaoService.Handle(evento);
     }
+    
+    public async Task<IEnumerable<Assinatura>> GetAssinaturasByContaIdAsync(int contaId)
+    {
+        var conta = await _contaRepository.GetByIdWithAssinaturasAsync(contaId);
+
+        if (conta == null)
+        {
+            throw new KeyNotFoundException("Conta não encontrada.");
+        }
+        
+        return conta.Assinaturas;
+    }
 }

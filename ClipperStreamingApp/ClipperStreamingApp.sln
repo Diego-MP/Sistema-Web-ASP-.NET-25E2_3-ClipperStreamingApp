@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipperStreamingApp.Domain"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipperStreamingApp.Infrastructure", "ClipperStreamingApp.Infrastructure\ClipperStreamingApp.Infrastructure.csproj", "{43C8F927-6491-4167-AB60-E0CF76FD4A33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipperStreamingApp.Repositorie", "ClipperStreamingApp.Repositorie\ClipperStreamingApp.Repositorie.csproj", "{AC1D0128-7D55-46FA-B7FA-946E71A0D537}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +30,5 @@ Global
 		{43C8F927-6491-4167-AB60-E0CF76FD4A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43C8F927-6491-4167-AB60-E0CF76FD4A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43C8F927-6491-4167-AB60-E0CF76FD4A33}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC1D0128-7D55-46FA-B7FA-946E71A0D537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC1D0128-7D55-46FA-B7FA-946E71A0D537}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC1D0128-7D55-46FA-B7FA-946E71A0D537}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC1D0128-7D55-46FA-B7FA-946E71A0D537}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

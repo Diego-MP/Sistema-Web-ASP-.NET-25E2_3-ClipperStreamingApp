@@ -16,7 +16,6 @@ namespace ClipperStreamingApp.WebApp.Controllers;
             _assinaturaService = assinaturaService;
         }
 
-        // GET: /Assinatura/Index
         public async Task<IActionResult> Index()
         {
             var planos = await _assinaturaService.GetPlanosAsync();
